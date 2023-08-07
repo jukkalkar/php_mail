@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = validateForm($name, $contact, $email, $subject, $message);
 
     if (empty($errors)) {
-        include('config.php'); // Include your database connection file
+        include('config.php');
         $sql = "INSERT INTO contact_form (name, contact, email, subject, message, ip_address, timestamp) VALUES ('$name', '$contact', '$email', '$subject', '$message', '$ip_address', '$timestamp')";
         if ($conn->query($sql) === true) {
             if (sendEmail($name, $contact, $email, $subject, $message)) {
